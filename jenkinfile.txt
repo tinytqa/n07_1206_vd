@@ -5,7 +5,7 @@ pipeline {
 	stage('clone'){
 		steps {
 			echo 'Cloning source code'
-			git branch:'main', url: 'https://github.com/huudqtmu/projectnet.git'
+			git branch:'main', url: 'https://github.com/tinytqa/n07_1206_vd'
 		}
 	} // end clone
 
