@@ -9,6 +9,14 @@ pipeline {
             }
         }
 
-       
+        stage('Publish') {
+            steps {
+                echo 'Publish to running folder'
+                // Stop IIS to avoid file conflict (you can uncomment the next line if needed)
+                // bat 'iisreset /stop'
+
+                bat 'xcopy "%WORKSPACE%\\publish" "c:\\n071206" /E /Y /I /R'
+            }
+        }
     }
 }
