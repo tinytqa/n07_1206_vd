@@ -11,16 +11,3 @@ pipeline {
 
   } // end stages
 }//end pipeline
-stage('restore package') {
-		steps
-		{
-			echo 'Restore package'
-			bat 'dotnet restore'
-		}
-	}
-stage ('build') {
-		steps {
-			echo 'build project netcore'
-			bat 'dotnet build  --configuration Release'
-		}
-	}
