@@ -10,7 +10,7 @@ pipeline {
 	} // end clone
 
   } // end stages
-stage ('Publish') {
+ stage ('Publish') {
 		steps {
 			echo 'public 2 runnig folder'
 		//iisreset /stop // stop iis de ghi de file 
