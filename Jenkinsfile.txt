@@ -1,19 +1,22 @@
 pipeline {
- agent any
- 
- stages {
-	stage('clone'){
-		steps {
-			echo 'Cloning source code'
-			git branch:'main', url: 'https://github.com/tinytqa/n07_1206_vd'
-		}
-	} // end clone
-	 stage ('Publish') {
-		steps {
-			echo 'public 2 runnig folder'
-		//iisreset /stop // stop iis de ghi de file 
-			bat 'xcopy "%WORKSPACE%\\publish" /E /Y /I /R "c:\\n071206"'
- 		}
-	}
-  } // end stages
-}//end pipeline
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                echo 'Cloning source code'
+                git branch: 'main', url: 'https://github.com/tinytqa/n07_1206_vd'
+            }
+        }
+
+        stage('Publish') {
+            steps {
+                echo 'Publish to running folder'
+                // Stop IIS to avoid file conflict (you can uncomment the next line if needed)
+                // bat 'iisreset /stop'
+
+                bat 'xcopy "%WORKSPACE%\\publish" "c:\\n071206" /E /Y /I /R'
+            }
+        }
+    }
+}
